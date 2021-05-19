@@ -1,13 +1,8 @@
+import React from 'react';
+
 import{ Route,Switch} from 'react-router-dom';
 
 import { Navbar } from './Components/Navbar';
-import  Login  from './Components/Login';
-
-//const Login = React.lazy(()=>{ import('./Components/Login')  });
-
-import  SignUp  from './Components/Signup';
-
-//const SignUp = React.lazy(()=>import('./Components/Signup'));
 
 import  Home   from './Home';
 import { ProtectedRoute } from './ProtectedRoute';
@@ -15,7 +10,10 @@ import { ProtectedRoute } from './ProtectedRoute';
 import { useAuth } from './Context/AuthContext'
 
 import { Base } from './FirestoreFileUpload/BaseComp';
-import React from 'react';
+
+
+const Login = React.lazy(()=> (import('./Components/Login')));
+const SignUp = React.lazy(()=>(import('./Components/Signup')));
 
 const App=()=>{
 
@@ -25,7 +23,7 @@ return(
 <>
    
         <Navbar />
-        <React.Suspense fallback={<h1 className='font-bold my-10'>Loading...</h1>}>
+        <React.Suspense fallback={<h1 style={{marginTop:40,textAlign:'center'}}>Loading...</h1>}>
           <Switch>
               <ProtectedRoute exact path='/home' isAuth={auth}  component={ Home }  />
               <Route exact path='/' component={Base} />
