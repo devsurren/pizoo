@@ -7,7 +7,7 @@ import { loginInitialValues,LoginValidationSchema  } from '../Schema/validationS
 import { useAuth } from "../Context/AuthContext";
 import { FormField } from "./FormField";
 
-export const Login=()=>{
+ const Login=()=>{
 
      const { login,error,user,setError }=useAuth();
 
@@ -60,4 +60,6 @@ export const Login=()=>{
         </>
     )
 
-}                                           
+}     
+
+export default Login;                                      

@@ -4,7 +4,7 @@ import { ImageUploadForm } from "./FirestoreFileUpload/ImageUpload";
 import { ImageGrid } from "./FirestoreFileUpload/ImageGrid";
 import { ModalImage } from "./FirestoreFileUpload/ModalImage";
 
-export const Home=()=>{
+ const Home=()=>{
     const [selectedImage,setSelectedImage]=useState(null);
 
   return(
@@ -17,3 +17,5 @@ export const Home=()=>{
       </>
   )
 }
+
+export default Home;

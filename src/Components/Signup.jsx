@@ -10,7 +10,7 @@ import { useAuth } from "../Context/AuthContext";
 
 import { firebaseFireStore } from "../config/config";
 
-export const SignUp=()=>{
+const SignUp=()=>{
 
     const { signUp,user,error,setError }=useAuth();
 
@@ -86,3 +86,5 @@ export const SignUp=()=>{
     )
 
 }
+
+export default SignUp;
