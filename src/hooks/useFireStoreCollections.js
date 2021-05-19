@@ -10,8 +10,9 @@ export const useFireStoreCollections=(collectioname)=>{
 
     useEffect(()=>{
        
-      if(user.uid){
-        const unmout= firebaseFireStore.collection(collectioname).doc(user.uid)
+      if(user.uid)
+      {
+      firebaseFireStore.collection(collectioname).doc(user.uid)
         .onSnapshot((snap)=>{
            // console.log(snap.data().imagecollections)
             const items=[];
@@ -25,7 +26,7 @@ export const useFireStoreCollections=(collectioname)=>{
             setDocs(items);
         })
 
-        return ()=> unmout;
+        return;
       }
 
     },[collectioname]);
