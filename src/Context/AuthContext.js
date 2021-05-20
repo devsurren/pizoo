@@ -4,7 +4,7 @@ import { firebaseAuth  } from '../config/config'
 
 export const AuthContext=createContext();
 
-export const AuthContextProvider=({children})=>{
+export const AuthContextProvider=({ children })=>{
 
     const[user,setUser]=useState(null);
     const[auth,setAuth]=useState(false);
@@ -31,6 +31,7 @@ export const AuthContextProvider=({children})=>{
 
     const login=(email,password)=>{
         return firebaseAuth.signInWithEmailAndPassword(email,password).then((res)=>{
+            console.log(res);
         }).catch((err)=>{
             console.log(err.code);
             switch (err.code) {
@@ -48,11 +49,12 @@ export const AuthContextProvider=({children})=>{
     }
 
     useEffect(()=>{
-       const ejeact= firebaseAuth.onAuthStateChanged((acceptCurrenrChangeUser)=>{
+        firebaseAuth.onAuthStateChanged((acceptCurrenrChangeUser)=>{
+            console.log(acceptCurrenrChangeUser);
             setUser(acceptCurrenrChangeUser);
             setAuth(true);
         })
-        return ejeact
+    
     },[])
 
     return(

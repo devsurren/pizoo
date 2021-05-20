@@ -8,10 +8,12 @@ export const useFireStoreCollections=(collectioname)=>{
 
     const  { user } =useAuth();
 
+
     useEffect(()=>{
        
-      if(user.uid)
+      if(user)
       {
+        console.log(user.uid)
       firebaseFireStore.collection(collectioname).doc(user.uid)
         .onSnapshot((snap)=>{
            // console.log(snap.data().imagecollections)
@@ -26,10 +28,10 @@ export const useFireStoreCollections=(collectioname)=>{
             setDocs(items);
         })
 
-        return;
+       // return;
       }
 
-    },[collectioname]);
+    },[collectioname,user]);
 
     return {Docs};
 }
