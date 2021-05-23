@@ -9,7 +9,7 @@ export const ProtectedRoute=({
    const { auth  }= useAuth();
 
    if(auth){
-       localStorage.setItem("user","true");
+    localStorage.setItem("user","true");
    }
 
     return(< Route 

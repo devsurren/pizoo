@@ -9,12 +9,14 @@ export const Navbar=()=>{
 
        const loggingOut=()=>{
            firebaseAuth.signOut().then(()=>{
-               console.log('signoutSuccess')
+               localStorage.removeItem('user');
+               localStorage.removeItem('userName');
+               localStorage.removeItem('currentUser');
+               console.log('signoutSuccess');
            }).catch((err)=>{
                console.log(err.message);
-           })
+           });
        } 
-
 
     return(
       <>
@@ -24,9 +26,9 @@ export const Navbar=()=>{
                     <h2 className='logo-lead'>pizoo</h2>
                 </div>
                 <div className='link-group'>
-                 {user ? (
+                 {localStorage.getItem('user')||user ? (
                      <span>
-                            <span style={{fontWeight:'bold'}}>Hi , {user.displayName?user.displayName:'User'}</span>
+                            <span style={{fontWeight:'bold'}}>Hi,{localStorage.getItem('currentUser')?localStorage.getItem('userName'):'User'} </span>
                           <Link className='remove-underline logout' to='/' onClick={loggingOut}>Logout</Link>
                      </span>
                  ):(<ul className='navbar-ul'>

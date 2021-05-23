@@ -52,6 +52,9 @@ export const AuthContextProvider=({ children })=>{
         firebaseAuth.onAuthStateChanged((acceptCurrenrChangeUser)=>{
             console.log(acceptCurrenrChangeUser);
             setUser(acceptCurrenrChangeUser);
+            localStorage.setItem("currentUser",JSON.stringify(acceptCurrenrChangeUser));
+          //  
+            localStorage.setItem("userName",acceptCurrenrChangeUser.displayName);
             setAuth(true);
         })
     
