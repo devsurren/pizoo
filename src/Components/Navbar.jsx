@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import { useAuth } from "../Context/AuthContext"
 import { firebaseAuth } from "../config/config"
 
-export const Navbar=()=>{
+const Navbar=()=>{
 
     const { user }=useAuth();
 
@@ -47,3 +47,5 @@ export const Navbar=()=>{
       </>
     )
 }
+
+export default Navbar;
