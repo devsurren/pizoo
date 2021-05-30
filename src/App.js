@@ -1,6 +1,6 @@
 import React from 'react';
 
-import{ Route,Switch} from 'react-router-dom';
+import{ Route,Switch,BrowserRouter as Router} from 'react-router-dom';
 
 import  Navbar  from './Components/Navbar';
 import  Home   from './Home';
@@ -9,9 +9,12 @@ import SignUp  from './Components/Signup'
 
 import { ProtectedRoute } from './ProtectedRoute';
 
-import { useAuth } from './Context/AuthContext'
+import { useAuth,} from './Context/AuthContext'
 
 import { Base } from './FirestoreFileUpload/BaseComp';
+
+
+
 
 
 const App=()=>{
@@ -19,15 +22,24 @@ const App=()=>{
     const { auth  }=useAuth();
 
 return(
-<>
-        <Navbar />
-          <Switch>
-              <ProtectedRoute exact path='/home' isAuth={auth}  component={ Home }  />
-              <Route exact path='/' component={Base} />
-              <Route path='/login' component={Login} />
-              <Route path='/signup' component={SignUp} />
-          </Switch>
-</>
+
+ <>
+   
+
+    <Router>
+            
+            <Navbar />
+                    <Switch>
+                        <Route exact path='/' component={Base} />
+                        <Route exact  path='/login' component={Login} />
+                        <Route exact  path='/signup' component={SignUp} />
+                        <ProtectedRoute exact path='/home' isAuth={auth}  component={ Home }  />
+                    </Switch>
+
+         </Router>
+       
+  </>  
+ 
 )
 
 }
